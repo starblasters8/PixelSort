@@ -11,6 +11,8 @@ public class PixelSort
 {
     public void sortByHSB(String path) throws Exception
     {
+        int startTime = (int)System.currentTimeMillis();
+
         File file = new File(path);
         BufferedImage image = ImageIO.read(file);
         int width = image.getWidth();
@@ -71,10 +73,13 @@ public class PixelSort
         }
 
         ImageIO.write(out, fileExtension, new File(pathToExtension + "SortedHSB." + fileExtension));
+        System.out.println("Sorted by HSB in: " + ((int)System.currentTimeMillis() - startTime)/1000 + " seconds");
     }
 
     public void sortByRGB(String path) throws Exception
     {
+        int startTime = (int)System.currentTimeMillis();
+
         File file = new File(path);
         BufferedImage image = ImageIO.read(file);
         int width = image.getWidth();
@@ -135,10 +140,14 @@ public class PixelSort
         }
 
         ImageIO.write(out, fileExtension, new File(pathToExtension + "SortedRGB." + fileExtension));
+        System.out.println("Sorted by RGB in: " + ((int)System.currentTimeMillis() - startTime)/1000 + " seconds");
     }
 
     public void randomizeImage(String path) throws Exception
     {
+        //Start a timer
+        int startTime = (int)System.currentTimeMillis();
+
         Random rand = new Random();
         File file = new File(path);
         BufferedImage image = ImageIO.read(file);
@@ -166,10 +175,12 @@ public class PixelSort
         }
 
         ImageIO.write(out, fileExtension, new File(pathToExtension + "Randomized." + fileExtension));
+        System.out.println("Randomized in: " + ((int)System.currentTimeMillis() - startTime)/1000 + " seconds");
     }
+   
     public static void main(String[] args) throws Exception
     {
-        String testPath = "lib/rainbow.png";
+        String testPath = "lib/chonk.png";
         PixelSort ps = new PixelSort();
         ps.sortByRGB(testPath);
         ps.sortByHSB(testPath);
