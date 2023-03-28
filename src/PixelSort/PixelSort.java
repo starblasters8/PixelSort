@@ -169,9 +169,10 @@ public class PixelSort
     }
     public static void main(String[] args) throws Exception
     {
+        String testPath = "lib/rainbow.png";
         PixelSort ps = new PixelSort();
-        ps.sortByRGB("lib/rainbow.png");
-        ps.sortByHSB("lib/rainbow.png");
-        ps.randomizeImage("lib/rainbow.png");
+        ps.sortByRGB(testPath);
+        ps.sortByHSB(testPath);
+        ps.randomizeImage(testPath);
     }
 }
